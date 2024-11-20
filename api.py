@@ -15,7 +15,7 @@ class UserModel(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(80), unique=True, nullable=False)
     email = db.Column(db.String(80), unique=True, nullable=False)
-    ph_number = db.Column(db.Integer, unique=True, nullable=False)
+    phone = db.Column(db.String(50), unique=True, nullable=False)
 
     def __repr__(self):
         return f"User(name = {self.name}, email = {self.email})"
@@ -25,7 +25,7 @@ user_args = reqparse.RequestParser()
 user_args.add_argument("name", type=str, required=True, help="Name cannot be blank")
 user_args.add_argument("email", type=str, required=True, help="Email cannot be blank")
 user_args.add_argument(
-    "phone", type=int, required=True, help="Phone number cannot be blank"
+    "phone", type=str, required=True, help="Phone number cannot be blank"
 )
 
 # defining a schema for the response
@@ -33,7 +33,7 @@ userFields = {
     "id": fields.Integer,
     "name": fields.String,
     "email": fields.String,
-    "phone": fields.Integer,
+    "phone": fields.String,
 }
 
 
