@@ -84,12 +84,12 @@ class User(Resource):
         user = UserModel.query.filter_by(id=id).first()
         if not user:
             abort(404, message=f"User with this id {id} cannot be found.")
-        else:
-            user.name = args["name"]
-            user.email = args["email"]
-            user.phone = args["phone"]
-            db.session.commit()
-            return user
+
+        user.name = args["name"]
+        user.email = args["email"]
+        user.phone = args["phone"]
+        db.session.commit()
+        return user
 
     @marshal_with(userFields)
     def delete(self, id):
