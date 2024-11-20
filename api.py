@@ -2,10 +2,14 @@ from flask import Flask, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_restful import Resource, Api, reqparse, fields, marshal_with, abort
+from dotenv import load_dotenv
+import os
 
+load_dotenv()
 
 app = Flask(__name__, template_folder="templates", static_folder="static")
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///database.db"
+# app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///database.db"
+app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("SQLALCHEMY_DATABASE_URI")
 
 db = SQLAlchemy(app)
 api = Api(app)
