@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_restful import Resource, Api, reqparse, fields, marshal_with, abort
@@ -37,7 +37,6 @@ userFields = {
 }
 
 
-# endpoints
 class Users(Resource):
     @marshal_with(userFields)  # Apply the schema
     def get(self):
@@ -48,21 +47,74 @@ class Users(Resource):
     def post(self):
         # automatically send back a response if something is wrong
         args = user_args.parse_args()
+
+        # Check if the email and phone already exists
+        if UserModel.query.filter_by(email=args["email"]).first():
+            abort(409, message="A user with this email already exists")
+
+        elif UserModel.query.filter_by(phone=args["phone"]).first():
+            abort(409, message="A user with this phone already exists")
+
+        elif UserModel.query.filter_by(name=args["name"]).first():
+            abort(409, message="A user with this name already exists")
+
         user = UserModel(name=args["name"], email=args["email"], phone=args["phone"])
         db.session.add(user)
         db.session.commit()
 
+        user = UserModel.query.filter_by(id=user.id).first()
+        return user, 201
+
+        # users = UserModel.query.all()
+        # return users, 201  # marshal_with handling serializing - no need to jsonify
+
+
+class User(Resource):
+    @marshal_with(userFields)
+    def get(self, id):
+        user = UserModel.query.filter_by(id=id).first()
+        if not user:
+            abort(404, message=f"User with this id {id} cannot be found.")
+        return user
+
+    @marshal_with(userFields)
+    def patch(self, id):
+        args = user_args.parse_args()
+
+        user = UserModel.query.filter_by(id=id).first()
+        if not user:
+            abort(404, message=f"User with this id {id} cannot be found.")
+        else:
+            user.name = args["name"]
+            user.email = args["email"]
+            user.phone = args["phone"]
+            db.session.commit()
+            return user
+
+    @marshal_with(userFields)
+    def delete(self, id):
+        user = UserModel.query.filter_by(id=id).first()
+        if not user:
+            abort(404, message=f"User with this id {id} cannot be found.")
+
+        # UserModel.query.filter_by(id=id).delete()
+        db.session.delete(user)
+        db.session.commit()
+        # return jsonify({"message": f"User with id {id} has been successfully deleted."}), 200
+
         users = UserModel.query.all()
-        return users, 201  # marshal_with handling serializing - no need to jsonify
+        return users, 200
 
 
+# endpoints
 api.add_resource(Users, "/api/users/")
+api.add_resource(User, "/api/users/<int:id>")
 
 
 # endpoints
 @app.route("/")
 def index():
-    return "<h1>Hello World</h1>"
+    return "<h1>Flask Simple CRUD REST API</h1>"
 
 
 if __name__ == "__main__":
