@@ -1,0 +1,36 @@
+pip install flask flask-sqlalchemy flask-migrate flask_restful 
+
+
+in create_db 
+
+from api import app, db
+
+with app.app_context():
+    db.create_all()
+
+=> run create_db file 
+
+
+user_args = reqparse.RequestParser()
+user_args.add_argument("name", type=str, required=True, help="Name cannot be blank")
+user_args.add_argument("email", type=str, required=True, help="Email cannot be blank")
+user_args.add_argument(
+    "phone", type=int, required=True, help="Phone number cannot be blank"
+)
+
+
+class Users(Resource):
+    def get(self):
+        users = UserModel.query.all()
+        return users
+
+
+In Flask-RESTful, marshal_with is a decorator used to format and serialize the output of an API endpoint.
+It applies a predefined structure (schema) to the data returned by the endpoint. 
+
+How It Works
+
+    You define a schema (using fields from flask_restful) that specifies the structure of the response.
+    The marshal_with decorator automatically formats the returned data from the API according to this schema.
+
+
