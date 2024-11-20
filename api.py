@@ -4,12 +4,13 @@ from flask_migrate import Migrate
 from flask_restful import Resource, Api, reqparse, fields, marshal_with, abort
 from dotenv import load_dotenv
 import os
+from waitress import serve
 
 load_dotenv()
 
 app = Flask(__name__, template_folder="templates", static_folder="static")
-# app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///database.db"
-app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("SQLALCHEMY_DATABASE_URI")
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///database.db"
+# app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("SQLALCHEMY_DATABASE_URI")
 
 db = SQLAlchemy(app)
 api = Api(app)
@@ -122,4 +123,5 @@ def index():
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", debug=True, port=8000)
+    app.run( host="0.0.0.0", debug=True, port=8000)
+    # serve(app, host="0.0.0.0", port=8000)
