@@ -41,7 +41,8 @@ This project demonstrates a simple Flask-based REST API that allows basic CRUD (
 
    ```
 
-5. Run the Flask application:
+## Usage
+Run the Flask application:
 
    ```bash
    python app.py
