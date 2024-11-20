@@ -42,27 +42,28 @@ This project demonstrates a simple Flask-based REST API that allows basic CRUD (
    ```
 
 ## Usage
+
 Run the Flask application:
 
-   ```bash
-   python app.py
+```bash
+python app.py
 
-   ```
+```
 
-6. Visit http://localhost:8000 in your browser or use Postman or use ThunderClient VSCode extension to interact with the API.
+Visit http://localhost:8000 in your browser or use Postman or use ThunderClient VSCode extension to interact with the API.
 
 ## API Endpoints
 
-GET /api/records - Retrieve all records.
-POST /api/records - Create a new record.
-GET /api/records/<id> - Retrieve a record by ID.
-PUT /api/records/<id> - Update an existing record.
-DELETE /api/records/<id> - Delete a record by ID.
+- **GET** `/api/records` - Retrieve all records.
+- **POST** `/api/records` - Create a new record.
+- **GET** `/api/records/<id>` - Retrieve a record by ID.
+- **PUT** `/api/records/<id>` - Update an existing record.
+- **DELETE** `/api/records/<id>` - Delete a record by ID.
 
 ## Contributing
 
 Feel free to fork this repository, submit issues, and make pull requests. Contributions are always welcome!
 
 ## License
-This project is licensed under the MIT License.
 
+This project is licensed under the MIT License.
