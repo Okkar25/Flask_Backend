@@ -62,6 +62,7 @@ DELETE /api/records/<id> - Delete a record by ID.
 ## Contributing
 
 Feel free to fork this repository, submit issues, and make pull requests. Contributions are always welcome!
-License
 
+## License
 This project is licensed under the MIT License.
+
