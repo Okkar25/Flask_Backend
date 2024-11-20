@@ -33,4 +33,5 @@ How It Works
     You define a schema (using fields from flask_restful) that specifies the structure of the response.
     The marshal_with decorator automatically formats the returned data from the API according to this schema.
 
-
+git rm -r --cached instance/
+git rm --cached *.db
