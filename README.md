@@ -58,11 +58,11 @@ Visit http://localhost:8000 in your browser or use Postman or use ThunderClient 
 
 ## API Endpoints
 
-- **GET** `/api/records` - Retrieve all records.
-- **POST** `/api/records` - Create a new record.
-- **GET** `/api/records/<id>` - Retrieve a record by ID.
-- **PUT** `/api/records/<id>` - Update an existing record.
-- **DELETE** `/api/records/<id>` - Delete a record by ID.
+- **GET** `/api/users` - Retrieve all users.
+- **POST** `/api/users` - Create a new user.
+- **GET** `/api/users/<id>` - Retrieve a specific user by ID.
+- **PATCH** `/api/users/<id>` - Update an existing user by ID.
+- **DELETE** `/api/users/<id>` - Delete a record by ID.
 
 ## Contributing
 
