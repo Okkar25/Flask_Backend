@@ -6,6 +6,10 @@ This project demonstrates a simple Flask-based REST API that allows basic CRUD (
 
 https://simple-crud-flask-rest-api.onrender.com/
 
+## Sample
+
+![Flask_API](https://github.com/user-attachments/assets/29b415c1-e635-45a3-8b7d-4560c46c4bdf)
+
 ## Table of Contents
 
 - [Installation](#installation)
