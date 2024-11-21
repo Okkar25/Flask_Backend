@@ -2,6 +2,10 @@
 
 This project demonstrates a simple Flask-based REST API that allows basic CRUD (Create, Read, Update, Delete) operations. It is designed to handle a database of records using Flask, Flask-RESTful, and SQLAlchemy.
 
+## Demo
+
+https://simple-crud-flask-rest-api.onrender.com/
+
 ## Table of Contents
 
 - [Installation](#installation)
