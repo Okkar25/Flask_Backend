@@ -5,6 +5,8 @@ from flask_restful import Resource, Api, reqparse, fields, marshal_with, abort
 from dotenv import load_dotenv
 import os
 from waitress import serve
+from flask_swagger_ui import get_swaggerui_blueprint
+from flask_cors import CORS
 
 # load_dotenv()
 
@@ -12,8 +14,25 @@ app = Flask(__name__, template_folder="templates", static_folder="static")
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///database.db"
 # app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("SQLALCHEMY_DATABASE_URI")
 
+SWAGGER_URL = '/swagger'  # URL to access Swagger UI
+# API_URL = '/static/swagger.json'  # Path to Swagger specification file
+API_URL = '/static/swagger.json'  # Path to Swagger specification file
+
 db = SQLAlchemy(app)
 api = Api(app)
+# Enable CORS for the Flask app
+CORS(app)
+
+# Register the Swagger UI blueprint
+swaggerui_blueprint = get_swaggerui_blueprint(
+    SWAGGER_URL,  # Swagger UI URL
+    API_URL,      # API URL
+    config={      # Swagger UI configuration (optional)
+        'app_name': "Sample Flask Application"
+    }
+)
+
+app.register_blueprint(swaggerui_blueprint, url_prefix=SWAGGER_URL)
 
 
 class UserModel(db.Model):

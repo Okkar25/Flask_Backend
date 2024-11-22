@@ -4,7 +4,11 @@ This project demonstrates a simple Flask-based REST API that allows basic CRUD (
 
 ## Demo
 
-https://simple-crud-flask-rest-api.onrender.com/
+https://simple-crud-flask-rest-api.onrender.com/swagger
+
+https://simple-crud-flask-rest-api.onrender.com/api/users
+
+https://simple-crud-flask-rest-api.onrender.com
 
 ## Sample
 
