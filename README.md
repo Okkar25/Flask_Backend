@@ -12,6 +12,10 @@ https://simple-crud-flask-rest-api.onrender.com
 
 ## Sample
 
+![swagger](https://github.com/user-attachments/assets/0c81df08-2c43-426f-b184-c09458f687a6)
+![swagger1](https://github.com/user-attachments/assets/02a53341-162c-460e-b6bb-2da5e39e7892)
+![swagger2](https://github.com/user-attachments/assets/79274609-509b-451e-a257-b40580df31bd)
+![swagger3](https://github.com/user-attachments/assets/777e8faa-7a1f-4984-bb87-7f059f151ca5)
 ![Flask_API](https://github.com/user-attachments/assets/29b415c1-e635-45a3-8b7d-4560c46c4bdf)
 
 ## Table of Contents
