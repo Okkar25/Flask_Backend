@@ -5,9 +5,9 @@
     "description": "A simple CRUD API for managing users.",
     "version": "1.0.0"
   },
-  "host": "localhost:8000",
+  "host": "simple-crud-flask-rest-api.onrender.com/",
   "basePath": "/",
-  "schemes": ["http"],
+  "schemes": ["https"],
   "paths": {
     "/api/users/": {
       "get": {
@@ -25,7 +25,7 @@
           }
         }
       },
-      
+
       "post": {
         "summary": "Create a new user",
         "description": "Add a new user to the database.",
